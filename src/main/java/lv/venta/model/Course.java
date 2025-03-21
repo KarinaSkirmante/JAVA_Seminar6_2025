@@ -36,7 +36,7 @@ public class Course {
 	private long cId;
 	
 	@NotNull
-	@Pattern(regexp = "[A-ZĒŪĪĻĶĢŠĀŽČŅa-zēūīļķģšāžčņ ]{4,20}")
+	@Pattern(regexp = "[A-ZĒŪĪĻĶĢŠĀŽČŅa-zēūīļķģšāžčņ ]{4,50}")
 	@Column(name = "Title")
 	private String title;
 	
