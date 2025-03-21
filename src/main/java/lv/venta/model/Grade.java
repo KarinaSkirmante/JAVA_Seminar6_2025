@@ -47,4 +47,12 @@ public class Grade {
 	private Course course;
 	
 	
+	public Grade(int grvalue, Student student, Course course)
+	{
+		setGrvalue(grvalue);
+		setStudent(student);
+		setCourse(course);
+	}
+	
+	
 }
