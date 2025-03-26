@@ -33,7 +33,7 @@ public class Course {
 	@Column(name = "CId")//MYSQL - c_id
 	@Id //ka primārā atslēga (PK)
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long cId;
+	private long cid;
 	
 	@NotNull
 	@Pattern(regexp = "[A-ZĒŪĪĻĶĢŠĀŽČŅa-zēūīļķģšāžčņ ]{4,50}")

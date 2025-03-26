@@ -31,7 +31,7 @@ public class Grade {
 	@Column(name = "GId")//MYSQL - g_id
 	@Id //ka primārā atslēga (PK)
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long gId;
+	private long gid;
 	
 	@Min(1)
 	@Max(10)

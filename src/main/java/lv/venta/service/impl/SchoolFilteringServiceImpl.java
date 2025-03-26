@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import lv.venta.model.Course;
 import lv.venta.model.Grade;
+import lv.venta.model.Student;
 import lv.venta.repo.ICourseRepo;
 import lv.venta.repo.IGradeRepo;
 import lv.venta.repo.IProfessorRepo;
@@ -39,7 +40,7 @@ public class SchoolFilteringServiceImpl implements ISchoolFilteringService {
 		{
 			throw new Exception("Student with id " + id + " doesn't exist");
 		}
-		ArrayList<Grade> result = grRepo.findByStudentStId(id);
+		ArrayList<Grade> result = grRepo.findByStudentStid(id);
 		
 		if(result.isEmpty())
 		{
@@ -61,7 +62,7 @@ public class SchoolFilteringServiceImpl implements ISchoolFilteringService {
 			throw new Exception("Student with id " + id + " doesn't exist");
 		}
 		
-		ArrayList<Course> result = coRepo.findByGradesStudentStId(id);
+		ArrayList<Course> result = coRepo.findByGradesStudentStid(id);
 		
 		if(result.isEmpty())
 		{
@@ -84,7 +85,7 @@ public class SchoolFilteringServiceImpl implements ISchoolFilteringService {
 		}
 		
 		
-		ArrayList<Course> result = coRepo.findByProfessorPId(id);
+		ArrayList<Course> result = coRepo.findByProfessorPid(id);
 		
 		if(result.isEmpty())
 		{
@@ -107,7 +108,7 @@ public class SchoolFilteringServiceImpl implements ISchoolFilteringService {
 		}
 		
 		
-		if(!grRepo.existsByCourseCId(id))
+		if(!grRepo.existsByCourseCid(id))
 		{
 			throw new Exception("There is no course linked to grades");
 		}
@@ -116,11 +117,21 @@ public class SchoolFilteringServiceImpl implements ISchoolFilteringService {
 		
 		return result;
 	}
+
+	@Override
+	public ArrayList<Student> selectStudentsWithFailedGrades() throws Exception {
+		
+		
+		ArrayList<Student> result = studRepo.findByGradesGrvalueLessThan(4);
+		
+		if(result.isEmpty())
+		{
+			throw new Exception("There is no student with failed grade");
+		}
+		
+		return result;
+	}
 	
-	//TODO
-	//uztaisīt abstrakto funkciju - izfiltrēt visus studentus, kuriem ir vismaz viena
-	//nesekmīga atzīme
-	//pāŗrakstīt so metodi arī šajā klasē
 	
 
 }

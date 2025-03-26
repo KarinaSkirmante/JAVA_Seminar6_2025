@@ -27,7 +27,7 @@ public class Professor {
 	@Column(name = "PId")//MYSQL - p_id
 	@Id //ka primārā atslēga (PK)
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long pId;
+	private long pid;
 	
 	@NotNull
 	@Pattern(regexp = "[A-ZĒŪĪĻĶĢŠĀŽČŅ]{1}[a-zēūīļķģšāžčņ]{3,10}([ ][A-ZĒŪĪĻĶĢŠĀŽČŅ]{1}[a-zēūīļķģšāžčņ]{3,10})?")
