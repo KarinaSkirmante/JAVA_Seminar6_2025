@@ -58,7 +58,10 @@ public class JavaSeminar62025Application {
 				Grade g2 = new Grade(8, st1, c2);//8 nopelnīja Jānis JAVA kursā
 				Grade g3 = new Grade(3, st2, c1);//3 nopelnīja Anna Paula OS kursā
 				Grade g4 = new Grade(5, st1, c1);//5 nopelnija Jānis OS kursā
-				grRepo.saveAll(Arrays.asList(g1, g2, g3, g4));
+				Grade g5 = new Grade(4, st1,c3);//4 nopelnīja Jānis DatorSis kursā
+				Grade g6 = new Grade(10, st2,c3);//10 nopelnīja Anna Paula DatorSis kursā
+				
+				grRepo.saveAll(Arrays.asList(g1, g2, g3, g4, g5, g6));
 				
 			}
 		};

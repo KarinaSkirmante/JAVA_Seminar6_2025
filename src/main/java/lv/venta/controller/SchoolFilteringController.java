@@ -41,6 +41,7 @@ public class SchoolFilteringController {
 	{
 		try {
 			ArrayList<Course> filteredCourses = schoolFiltService.selectCoursesByStudentId(id);
+			System.out.println(filteredCourses);
 			model.addAttribute("package", filteredCourses);
 			return "show-courses";
 		} catch (Exception e) {

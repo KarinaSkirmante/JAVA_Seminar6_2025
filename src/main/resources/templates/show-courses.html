@@ -6,8 +6,19 @@
 			<tr th:each="tempC : ${package}">
 				<td th:text="${tempC.getTitle()}"   ></td>
 				<td th:text="${tempC.getCp()}"   ></td>
-				<td th:text="${tempC.getProfessor().getName()}"   ></td>
-				<td th:text="${tempC.getProfessor().getSurname()}"   ></td>
+				<td th:text="${tempC.getProfessors()}"   ></td>
+				<td> 
+					<ul>
+						<li  th:each="tempP: ${tempC.getProfessors()}"  ></li>
+						
+						<span   th:text = "${tempP}"></span>
+						<!-- <span   th:text = "${tempP.getSurname()}"></span>
+							-->					
+					</ul>
+					
+					
+				</td>
+				
 				
 			</tr>
 			
