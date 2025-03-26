@@ -22,22 +22,13 @@ import lv.venta.model.enums.Degree;
 @ToString
 @Table(name = "ProfessorTable")//MYSQL - professor_table
 @Entity
-public class Professor {
+public class Professor extends Person {
 	@Setter(value = AccessLevel.NONE)
 	@Column(name = "PId")//MYSQL - p_id
 	@Id //ka primārā atslēga (PK)
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long pid;
 	
-	@NotNull
-	@Pattern(regexp = "[A-ZĒŪĪĻĶĢŠĀŽČŅ]{1}[a-zēūīļķģšāžčņ]{3,10}([ ][A-ZĒŪĪĻĶĢŠĀŽČŅ]{1}[a-zēūīļķģšāžčņ]{3,10})?")
-	@Column(name = "Name")//MYSQL - name
-	private String name;
-	
-	@NotNull
-	@Pattern(regexp = "[A-ZĒŪĪĻĶĢŠĀŽČŅ]{1}[a-zēūīļķģšāžčņ]{3,15}([-][A-ZĒŪĪĻĶĢŠĀŽČŅ]{1}[a-zēūīļķģšāžčņ]{3,15})?")
-	@Column(name = "Surname")//MYSQL - surname
-	private String surname;
 	
 	@NotNull
 	@Column(name = "Degree")//MYSQL - degree
@@ -50,8 +41,7 @@ public class Professor {
 	
 	
 	public Professor(String name, String surname, Degree degree) {
-		setName(name);
-		setSurname(surname);
+		super(name, surname);
 		setDegree(degree);
 	}
 	

@@ -23,23 +23,14 @@ import lombok.ToString;
 @ToString
 @Table(name = "StudentTable")//MYSQL - student_table
 @Entity
-public class Student {
+public class Student extends Person {
 	@Setter(value = AccessLevel.NONE)
 	@Column(name = "StId")//MYSQL - st_id
 	@Id //ka primārā atslēga (PK)
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long stid;
 	
-	@NotNull
-	@Pattern(regexp = "[A-ZĒŪĪĻĶĢŠĀŽČŅ]{1}[a-zēūīļķģšāžčņ]{3,10}([ ][A-ZĒŪĪĻĶĢŠĀŽČŅ]{1}[a-zēūīļķģšāžčņ]{3,10})?")
-	@Column(name = "Name")//MYSQL - name
-	private String name;
-	
-	@NotNull
-	@Pattern(regexp = "[A-ZĒŪĪĻĶĢŠĀŽČŅ]{1}[a-zēūīļķģšāžčņ]{3,15}([-][A-ZĒŪĪĻĶĢŠĀŽČŅ]{1}[a-zēūīļķģšāžčņ]{3,15})?")
-	@Column(name = "Surname")//MYSQL - surname
-	private String surname;
-	
+		
 	@OneToMany(mappedBy = "student")//nosaukums mainīgajam no otras klases, uz kuru ir @JoinColumn anotācija
 	@ToString.Exclude
 	private Collection<Grade> grades;
@@ -48,8 +39,7 @@ public class Student {
 	
 	
 	public Student(String name, String surname) {
-		setName(name);
-		setSurname(surname);
+		super(name, surname);
 	}
 	
 }
