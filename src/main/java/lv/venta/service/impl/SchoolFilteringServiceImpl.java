@@ -96,8 +96,31 @@ public class SchoolFilteringServiceImpl implements ISchoolFilteringService {
 
 	@Override
 	public float calculateAVGGradeInCourseId(long id) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+		if( id <= 0)
+		{
+			throw new Exception("Id should be positive");
+		}
+		
+		if(!coRepo.existsById(id))
+		{
+			throw new Exception("Course with id " + id + " doesn't exist");
+		}
+		
+		
+		if(!grRepo.existsByCourseCId(id))
+		{
+			throw new Exception("There is no course linked to grades");
+		}
+		
+		float result = grRepo.calculateAVGGradeByCourseId(id);
+		
+		return result;
 	}
+	
+	//TODO
+	//uztaisīt abstrakto funkciju - izfiltrēt visus studentus, kuriem ir vismaz viena
+	//nesekmīga atzīme
+	//pāŗrakstīt so metodi arī šajā klasē
+	
 
 }
