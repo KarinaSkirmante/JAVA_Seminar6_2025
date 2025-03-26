@@ -1,0 +1,19 @@
+<html xmlns:th="https://www.thymeleaf.org">
+	<body>
+		<p> Atzīmes: </p>
+		
+		<table border="1px">
+			<tr th:each="tempC : ${package}">
+				<td th:text="${tempC.getTitle()}"   ></td>
+				<td th:text="${tempC.getCp()}"   ></td>
+				<td th:text="${tempC.getProfessor().getName()}"   ></td>
+				<td th:text="${tempC.getProfessor().getSurname()}"   ></td>
+				
+			</tr>
+			
+			
+			
+		</table>
+		
+	</body>
+</html>

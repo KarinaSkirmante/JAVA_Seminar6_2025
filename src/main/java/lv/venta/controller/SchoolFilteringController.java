@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import lv.venta.model.Course;
 import lv.venta.model.Grade;
 import lv.venta.service.ISchoolFilteringService;
 
@@ -20,7 +21,7 @@ public class SchoolFilteringController {
 	private ISchoolFilteringService schoolFiltService;
 	
 	
-	@GetMapping("/grades/student/{id}")
+	@GetMapping("/grades/student/{id}")//localhost:8080/school/filtering/grades/student/1
 	public String getControllerGradesByStudent(@PathVariable(name = "id") long id, Model model)
 	{
 		try {
@@ -33,6 +34,20 @@ public class SchoolFilteringController {
 		}
 	}
 	
+	
+	@GetMapping("/courses/student/{id}")//localhost:8080/school/filtering/courses/student/1
+	public String getControllerCoursesByStudent(@PathVariable(name = "id") long id, Model model)
+	{
+		try {
+			ArrayList<Course> filteredCourses = schoolFiltService.selectCoursesByStudentId(id);
+			model.addAttribute("package", filteredCourses);
+			return "show-courses";
+		} catch (Exception e) {
+			model.addAttribute("package", e.getMessage());
+			return "show-error";
+		}
+	}
+
 	
 
 }
