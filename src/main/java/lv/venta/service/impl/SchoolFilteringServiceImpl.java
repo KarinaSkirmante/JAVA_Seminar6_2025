@@ -85,7 +85,7 @@ public class SchoolFilteringServiceImpl implements ISchoolFilteringService {
 		}
 		
 		
-		ArrayList<Course> result = coRepo.findByProfessorPid(id);
+		ArrayList<Course> result = coRepo.findByProfessorsPid(id);
 		
 		if(result.isEmpty())
 		{

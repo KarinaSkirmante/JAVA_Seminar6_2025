@@ -37,11 +37,22 @@ public class JavaSeminar62025Application {
 				
 				Professor p1 = new Professor("Karina", "Šķirmante", Degree.mg);
 				Professor p2 = new Professor("Kārlis", "Immers", Degree.mg);
-				profRepo.saveAll(Arrays.asList(p1, p2));
+				Professor p3 = new Professor("Artūrs", "Orbidāns", Degree.mg);
+				Professor p4 = new Professor("Kārlis", "Laborants", Degree.bsc);
+				profRepo.saveAll(Arrays.asList(p1, p2, p3, p4));
 				
 				Course c1 = new Course("Tīklu operētajsistēmas", 6, p2);
 				Course c2 = new Course("Programmēšana tīmeklī JAVA", 6, p1);
-				couRepo.saveAll(Arrays.asList(c1, c2));
+				Course c3 = new Course("Datorsistēmu arhitektūra", 6, p3, p4);
+				Course c4 = new Course("Datu Struktūras un pamatalgoritmi", 3, p1);
+				couRepo.saveAll(Arrays.asList(c1, c2, c3, c4));
+				
+				p1.addCourse(c2);
+				p1.addCourse(c4);
+				p2.addCourse(c1);
+				p3.addCourse(c3);
+				p4.addCourse(c3);
+				profRepo.saveAll(Arrays.asList(p1, p2, p3, p4));
 				
 				Grade g1 = new Grade(10, st2, c2);//10 nopelnīja Anna Paula JAVA kursa
 				Grade g2 = new Grade(8, st1, c2);//8 nopelnīja Jānis JAVA kursā

@@ -50,8 +50,8 @@ public class Course {
 	
 	@ManyToMany
 	@JoinTable(name = "CourseProfessorTable",
-	joinColumns = @JoinColumn(name = "PId"),
-	inverseJoinColumns = @JoinColumn(name = "CId"))
+	joinColumns = @JoinColumn(name = "CId"),
+	inverseJoinColumns = @JoinColumn(name = "PId"))
 	private Collection<Professor> professors = new ArrayList<Professor>();
 	
 	@OneToMany(mappedBy = "course")

@@ -15,8 +15,8 @@ public interface ICourseRepo extends CrudRepository<Course, Long> {
 	public abstract ArrayList<Course> findByGradesStudentStid(long id);
 
 	//izveidos šādu SQL vaicājumu:
-	//SELECT * FROM course_table WHERE pid = 1;
+	//mainās SELECT vaicājums, jo ir starptabula TODO-> SELECT * FROM course_table WHERE pid = 1;
 	//?1 -> pirmais funkcijas parametrs
-	public abstract ArrayList<Course> findByProfessorPid(long id);
+	public abstract ArrayList<Course> findByProfessorsPid(long id);
 
 }
