@@ -9,6 +9,7 @@ import lv.venta.model.Course;
 import lv.venta.model.Grade;
 import lv.venta.repo.ICourseRepo;
 import lv.venta.repo.IGradeRepo;
+import lv.venta.repo.IProfessorRepo;
 import lv.venta.repo.IStudentRepo;
 import lv.venta.service.ISchoolFilteringService;
 
@@ -23,6 +24,9 @@ public class SchoolFilteringServiceImpl implements ISchoolFilteringService {
 	
 	@Autowired
 	private ICourseRepo coRepo;
+	
+	@Autowired
+	private IProfessorRepo profRepo;
 	
 	@Override
 	public ArrayList<Grade> selectGradesByStudentId(long id) throws Exception {
@@ -69,8 +73,25 @@ public class SchoolFilteringServiceImpl implements ISchoolFilteringService {
 
 	@Override
 	public ArrayList<Course> selectCoursesByProfessorId(long id) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		if( id <= 0)
+		{
+			throw new Exception("Id should be positive");
+		}
+		
+		if(!profRepo.existsById(id))
+		{
+			throw new Exception("Professor with id " + id + " doesn't exist");
+		}
+		
+		
+		ArrayList<Course> result = coRepo.findByProfessorPId(id);
+		
+		if(result.isEmpty())
+		{
+			throw new Exception("There is no course linked to profesor");
+		}
+		
+		return result;
 	}
 
 	@Override
