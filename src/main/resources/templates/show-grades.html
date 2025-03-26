@@ -1,0 +1,18 @@
+<html xmlns:th="https://www.thymeleaf.org">
+	<body>
+		<p> Atzīmes: </p>
+		
+		<table border="1px">
+			<tr th:each="tempG : ${package}">
+				<td th:text="${tempG.getGrvalue()}"   ></td>
+				<td th:text="${tempG.getStudent().getName()}"  ></td>
+				<td th:text="${tempG.getStudent().getSurname()}"  ></td>
+				<td th:text="${tempG.getCourse().getTitle()}"  ></td>
+			</tr>
+			
+			
+			
+		</table>
+		
+	</body>
+</html>
