@@ -40,7 +40,7 @@ public class SchoolFilteringServiceImpl implements ISchoolFilteringService {
 		{
 			throw new Exception("Student with id " + id + " doesn't exist");
 		}
-		ArrayList<Grade> result = grRepo.findByStudentStid(id);
+		ArrayList<Grade> result = grRepo.findByStudentPeid(id);
 		
 		if(result.isEmpty())
 		{
@@ -62,7 +62,7 @@ public class SchoolFilteringServiceImpl implements ISchoolFilteringService {
 			throw new Exception("Student with id " + id + " doesn't exist");
 		}
 		
-		ArrayList<Course> result = coRepo.findByGradesStudentStid(id);
+		ArrayList<Course> result = coRepo.findByGradesStudentPeid(id);
 		
 		if(result.isEmpty())
 		{
@@ -85,7 +85,7 @@ public class SchoolFilteringServiceImpl implements ISchoolFilteringService {
 		}
 		
 		
-		ArrayList<Course> result = coRepo.findByProfessorPid(id);
+		ArrayList<Course> result = coRepo.findByProfessorPeid(id);
 		
 		if(result.isEmpty())
 		{

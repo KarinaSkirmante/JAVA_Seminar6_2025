@@ -21,14 +21,11 @@ import lombok.ToString;
 @Setter
 @NoArgsConstructor
 @ToString
-@Table(name = "StudentTable")//MYSQL - student_table
+// jānoņem tikai tad, ja @Inheritance anotācija stratēgija ir SINGLE_TABLE
+//@Table(name = "StudentTable")//MYSQL - student_table
 @Entity
 public class Student extends Person {
-	@Setter(value = AccessLevel.NONE)
-	@Column(name = "StId")//MYSQL - st_id
-	@Id //ka primārā atslēga (PK)
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long stid;
+
 	
 		
 	@OneToMany(mappedBy = "student")//nosaukums mainīgajam no otras klases, uz kuru ir @JoinColumn anotācija

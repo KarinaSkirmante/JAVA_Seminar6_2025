@@ -20,14 +20,11 @@ import lv.venta.model.enums.Degree;
 @Setter
 @NoArgsConstructor
 @ToString
-@Table(name = "ProfessorTable")//MYSQL - professor_table
+//jānoņem tikai tad, ja @Inheritance anotācija stratēgija ir SINGLE_TABLE
+//@Table(name = "ProfessorTable")//MYSQL - professor_table
 @Entity
 public class Professor extends Person {
-	@Setter(value = AccessLevel.NONE)
-	@Column(name = "PId")//MYSQL - p_id
-	@Id //ka primārā atslēga (PK)
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long pid;
+
 	
 	
 	@NotNull
